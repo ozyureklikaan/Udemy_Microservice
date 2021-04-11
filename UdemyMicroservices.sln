@@ -7,16 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{959D2222-0B5D-4D8A-A1AB-7DF70F9ABF07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Catalog", "Services\Catalog\UdemyMicroservices.Catalog\UdemyMicroservices.Catalog.csproj", "{1017AAB1-EAB5-4959-A8AB-D8FE20843AA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Catalog", "Services\Catalog\UdemyMicroservices.Catalog\UdemyMicroservices.Catalog.csproj", "{1017AAB1-EAB5-4959-A8AB-D8FE20843AA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{14E3A80F-2507-4401-869B-D8B04BE6778D}"
 	ProjectSection(SolutionItems) = preProject
+		Portainer.txt = Portainer.txt
 		Ports.txt = Ports.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{3BF783DB-966F-458C-9C79-1574D65A2C27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Shared", "Shared\UdemyMicroservices.Shared\UdemyMicroservices.Shared.csproj", "{BB5E0839-C63D-47AD-B388-BA7E55E745DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Shared", "Shared\UdemyMicroservices.Shared\UdemyMicroservices.Shared.csproj", "{BB5E0839-C63D-47AD-B388-BA7E55E745DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
