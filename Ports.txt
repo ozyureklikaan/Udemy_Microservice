@@ -1,2 +1,5 @@
+IdentityServer => 5001
+
 UdemyMicroservices:
 	- CatalogAPI => 5011
+	- PhotoStock => 5012
