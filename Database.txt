@@ -1,0 +1,7 @@
+SqlServer: 
+	User: sa
+	Password: Password1*
+
+PostgreSql:
+	User: admin
+	Password: Password1*
