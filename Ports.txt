@@ -1,5 +1,6 @@
 IdentityServer => 5001
 
 UdemyMicroservices:
-	- CatalogAPI => 5011
-	- PhotoStock => 5012
+	- CatalogAPI	=> 5011
+	- PhotoStockAPI	=> 5012
+	- BasketAPI		=> 5013
