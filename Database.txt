@@ -1,6 +1,12 @@
 SqlServer: 
-	User: sa
-	Password: Password1*
+	- IdentityDb:
+		User: sa
+		Password: Password1*
+		Port: 1433
+	- OrderDb:
+		User: sa
+		Password: Password1*
+		Port: 1444
 
 PostgreSql:
 	User: admin
