@@ -38,15 +38,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservice.Discount"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{3A1B2CF0-6DF7-4AAB-88C3-2C60AE0AD1F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Order.API", "Services\Order\UdemyMicroservices.Order.API\UdemyMicroservices.Order.API.csproj", "{91DC566A-5853-4CD5-B1E8-AB010DEA5E67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Order.API", "Services\Order\UdemyMicroservices.Order.API\UdemyMicroservices.Order.API.csproj", "{91DC566A-5853-4CD5-B1E8-AB010DEA5E67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Order.Application", "Services\Order\UdemyMicroservices.Order.Application\UdemyMicroservices.Order.Application.csproj", "{771D0161-06D9-4799-9279-2A4372E870B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Order.Application", "Services\Order\UdemyMicroservices.Order.Application\UdemyMicroservices.Order.Application.csproj", "{771D0161-06D9-4799-9279-2A4372E870B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Order.Domain", "Services\Order\UdemyMicroservices.Order.Domain\UdemyMicroservices.Order.Domain.csproj", "{7AF97FBB-862B-4A80-B283-E6C54EE7F1B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Order.Domain", "Services\Order\UdemyMicroservices.Order.Domain\UdemyMicroservices.Order.Domain.csproj", "{7AF97FBB-862B-4A80-B283-E6C54EE7F1B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Order.Domain.Core", "Services\Order\UdemyMicroservices.Order.Domain.Core\UdemyMicroservices.Order.Domain.Core.csproj", "{A8E92669-CEAD-434E-8275-FC57EF8BE43A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Order.Domain.Core", "Services\Order\UdemyMicroservices.Order.Domain.Core\UdemyMicroservices.Order.Domain.Core.csproj", "{A8E92669-CEAD-434E-8275-FC57EF8BE43A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Order.Infrastructure", "Services\Order\UdemyMicroservices.Order.Infrastructure\UdemyMicroservices.Order.Infrastructure.csproj", "{76098ACD-2B82-4341-9666-90D429E53803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Order.Infrastructure", "Services\Order\UdemyMicroservices.Order.Infrastructure\UdemyMicroservices.Order.Infrastructure.csproj", "{76098ACD-2B82-4341-9666-90D429E53803}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakePayment", "FakePayment", "{3BC86EF5-2780-4088-A8DA-C59033A10673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.FakePayment", "Services\FakePayment\UdemyMicroservices.FakePayment\UdemyMicroservices.FakePayment.csproj", "{51E04A50-2C3D-4057-95FF-C14FAEB71B6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +102,10 @@ Global
 		{76098ACD-2B82-4341-9666-90D429E53803}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76098ACD-2B82-4341-9666-90D429E53803}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76098ACD-2B82-4341-9666-90D429E53803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E04A50-2C3D-4057-95FF-C14FAEB71B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E04A50-2C3D-4057-95FF-C14FAEB71B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E04A50-2C3D-4057-95FF-C14FAEB71B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E04A50-2C3D-4057-95FF-C14FAEB71B6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +127,8 @@ Global
 		{7AF97FBB-862B-4A80-B283-E6C54EE7F1B3} = {3A1B2CF0-6DF7-4AAB-88C3-2C60AE0AD1F4}
 		{A8E92669-CEAD-434E-8275-FC57EF8BE43A} = {3A1B2CF0-6DF7-4AAB-88C3-2C60AE0AD1F4}
 		{76098ACD-2B82-4341-9666-90D429E53803} = {3A1B2CF0-6DF7-4AAB-88C3-2C60AE0AD1F4}
+		{3BC86EF5-2780-4088-A8DA-C59033A10673} = {2A233E6D-56F6-4A5D-8933-E330B3966E97}
+		{51E04A50-2C3D-4057-95FF-C14FAEB71B6E} = {3BC86EF5-2780-4088-A8DA-C59033A10673}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF2EE440-DAE8-43A9-B88E-F15E8EBB6F4B}
