@@ -9,3 +9,5 @@ UdemyMicroservices:
 	- DiscountAPI	 => 5014
 	- OrderAPI		 => 5015
 	- FakePaymentAPI => 5016
+
+Web => 5010

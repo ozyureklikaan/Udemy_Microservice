@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Database.txt = Database.txt
 		Portainer.txt = Portainer.txt
 		Ports.txt = Ports.txt
+		UserInfo.txt = UserInfo.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{3BF783DB-966F-458C-9C79-1574D65A2C27}"
@@ -50,11 +51,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Order.In
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakePayment", "FakePayment", "{3BC86EF5-2780-4088-A8DA-C59033A10673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.FakePayment", "Services\FakePayment\UdemyMicroservices.FakePayment\UdemyMicroservices.FakePayment.csproj", "{51E04A50-2C3D-4057-95FF-C14FAEB71B6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.FakePayment", "Services\FakePayment\UdemyMicroservices.FakePayment\UdemyMicroservices.FakePayment.csproj", "{51E04A50-2C3D-4057-95FF-C14FAEB71B6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{90DA49AB-3E7A-4BD4-BBED-CA2EEFE1E1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Gateway", "Gateways\UdemyMicroservices.Gateway\UdemyMicroservices.Gateway.csproj", "{EC1D1078-1DF0-4C37-B89A-27013E3B209B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyMicroservices.Gateway", "Gateways\UdemyMicroservices.Gateway\UdemyMicroservices.Gateway.csproj", "{EC1D1078-1DF0-4C37-B89A-27013E3B209B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{2EC6E9CE-9712-4216-BABA-4F17503E06F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyMicroservices.Web", "Client\UdemyMicroservices.Web\UdemyMicroservices.Web.csproj", "{29C07F58-F42D-42C8-9B24-B5FA918D47D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,6 +119,10 @@ Global
 		{EC1D1078-1DF0-4C37-B89A-27013E3B209B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC1D1078-1DF0-4C37-B89A-27013E3B209B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC1D1078-1DF0-4C37-B89A-27013E3B209B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C07F58-F42D-42C8-9B24-B5FA918D47D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C07F58-F42D-42C8-9B24-B5FA918D47D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C07F58-F42D-42C8-9B24-B5FA918D47D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C07F58-F42D-42C8-9B24-B5FA918D47D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +147,7 @@ Global
 		{3BC86EF5-2780-4088-A8DA-C59033A10673} = {2A233E6D-56F6-4A5D-8933-E330B3966E97}
 		{51E04A50-2C3D-4057-95FF-C14FAEB71B6E} = {3BC86EF5-2780-4088-A8DA-C59033A10673}
 		{EC1D1078-1DF0-4C37-B89A-27013E3B209B} = {90DA49AB-3E7A-4BD4-BBED-CA2EEFE1E1AA}
+		{29C07F58-F42D-42C8-9B24-B5FA918D47D2} = {2EC6E9CE-9712-4216-BABA-4F17503E06F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF2EE440-DAE8-43A9-B88E-F15E8EBB6F4B}
