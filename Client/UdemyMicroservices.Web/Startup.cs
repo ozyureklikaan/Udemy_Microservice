@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyMicroservices.Shared.Services;
 using UdemyMicroservices.Web.Handler;
 using UdemyMicroservices.Web.Models;
 using UdemyMicroservices.Web.Services;
@@ -29,19 +30,29 @@ namespace UdemyMicroservices.Web
         {
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
+            
             services.AddHttpContextAccessor();
+            services.AddAccessTokenManagement();
+
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
             var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+            services.AddScoped<ClientCredentialTokenHandler>();
 
+            services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
             services.AddHttpClient<IIdentityService, IdentityService>();
-
             services.AddHttpClient<IUserService, UserService>(opt =>
                 {
                     opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
                 })
                 .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+            services.AddHttpClient<ICatalogService, CatalogService>(opt =>
+                {
+                    opt.BaseAddress = new Uri($"{ serviceApiSettings.GatewayBaseUri }{ serviceApiSettings.CatalogAPI.Path }");
+                })
+                .AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>

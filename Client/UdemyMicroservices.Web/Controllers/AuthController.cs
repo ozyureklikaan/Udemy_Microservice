@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +45,15 @@ namespace UdemyMicroservices.Web.Controllers
             }
 
             return RedirectToAction(nameof(Index), "Home");
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            await _identityService.RevokeRefreshToken();
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }
