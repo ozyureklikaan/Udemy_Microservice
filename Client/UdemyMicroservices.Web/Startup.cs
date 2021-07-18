@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UdemyMicroservices.Shared.Services;
 using UdemyMicroservices.Web.Handler;
+using UdemyMicroservices.Web.Helpers;
 using UdemyMicroservices.Web.Models;
 using UdemyMicroservices.Web.Services;
 using UdemyMicroservices.Web.Services.Interfaces;
@@ -34,6 +35,8 @@ namespace UdemyMicroservices.Web
             services.AddHttpContextAccessor();
             services.AddAccessTokenManagement();
 
+            services.AddSingleton<PhotoHelper>();
+
             services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
             var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
@@ -52,6 +55,11 @@ namespace UdemyMicroservices.Web
                 {
                     opt.BaseAddress = new Uri($"{ serviceApiSettings.GatewayBaseUri }{ serviceApiSettings.CatalogAPI.Path }");
                 })
+                .AddHttpMessageHandler<ClientCredentialTokenHandler>();
+            services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{ serviceApiSettings.GatewayBaseUri }{ serviceApiSettings.PhotoStockAPI.Path }");
+            })
                 .AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

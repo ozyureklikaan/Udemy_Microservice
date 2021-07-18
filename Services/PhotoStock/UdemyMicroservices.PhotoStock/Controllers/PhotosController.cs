@@ -28,9 +28,11 @@ namespace UdemyMicroservices.PhotoStock.Controllers
                     await photo.CopyToAsync(stream, cancellationToken);
                 }
 
-                var returnPath = "Photos/" + photo.FileName;
+                //var returnPath = "Photos/" + photo.FileName;
 
-                PhotoDto photoDto = new() { Url = returnPath };
+                //PhotoDto photoDto = new() { Url = returnPath };
+
+                PhotoDto photoDto = new() { Url = photo.FileName };
 
                 return CreateActionResultInstance(Response<PhotoDto>.Success(photoDto, 200));
             }

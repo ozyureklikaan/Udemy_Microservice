@@ -11,6 +11,7 @@ namespace UdemyMicroservices.Web.Models
         public string IdentityBaseUri { get; set; }
         public string PhotoStockUri { get; set; }
         public ServiceApi CatalogAPI { get; set; }
+        public ServiceApi PhotoStockAPI { get; set; }
     }
 
     public class ServiceApi
