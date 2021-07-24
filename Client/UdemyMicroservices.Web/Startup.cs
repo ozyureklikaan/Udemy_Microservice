@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +16,7 @@ using UdemyMicroservices.Web.Helpers;
 using UdemyMicroservices.Web.Models;
 using UdemyMicroservices.Web.Services;
 using UdemyMicroservices.Web.Services.Interfaces;
+using UdemyMicroservices.Web.Validators;
 
 namespace UdemyMicroservices.Web
 {
@@ -53,7 +55,7 @@ namespace UdemyMicroservices.Web
                     options.Cookie.Name = "udemywebcookie";
                 });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CourseCreateInputValidator>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
