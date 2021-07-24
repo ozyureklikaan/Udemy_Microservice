@@ -36,6 +36,8 @@ namespace UdemyMicroservices.Basket.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveOrUpdate(BasketDto basketDto)
         {
+            basketDto.UserId = _sharedIdentityService.GetUserId;
+
             var response = await _basketService.SaveOrUpdate(basketDto);
 
             return CreateActionResultInstance(response);

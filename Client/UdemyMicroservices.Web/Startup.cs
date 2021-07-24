@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UdemyMicroservices.Shared.Services;
+using UdemyMicroservices.Web.Extensions;
 using UdemyMicroservices.Web.Handler;
 using UdemyMicroservices.Web.Helpers;
 using UdemyMicroservices.Web.Models;
@@ -38,29 +39,10 @@ namespace UdemyMicroservices.Web
             services.AddSingleton<PhotoHelper>();
 
             services.AddScoped<ISharedIdentityService, SharedIdentityService>();
-
-            var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
-
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.AddScoped<ClientCredentialTokenHandler>();
 
-            services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
-            services.AddHttpClient<IIdentityService, IdentityService>();
-            services.AddHttpClient<IUserService, UserService>(opt =>
-                {
-                    opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-                })
-                .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-            services.AddHttpClient<ICatalogService, CatalogService>(opt =>
-                {
-                    opt.BaseAddress = new Uri($"{ serviceApiSettings.GatewayBaseUri }{ serviceApiSettings.CatalogAPI.Path }");
-                })
-                .AddHttpMessageHandler<ClientCredentialTokenHandler>();
-            services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
-            {
-                opt.BaseAddress = new Uri($"{ serviceApiSettings.GatewayBaseUri }{ serviceApiSettings.PhotoStockAPI.Path }");
-            })
-                .AddHttpMessageHandler<ClientCredentialTokenHandler>();
+            services.AddHttpClientServices(Configuration);
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
