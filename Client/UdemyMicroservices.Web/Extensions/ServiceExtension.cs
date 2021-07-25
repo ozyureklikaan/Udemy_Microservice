@@ -44,6 +44,12 @@ namespace UdemyMicroservices.Web.Extensions
                 opt.BaseAddress = new Uri($"{ serviceApiSettings.GatewayBaseUri }{ serviceApiSettings.BasketAPI.Path }");
             })
                 .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IDiscountService, DiscountService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{ serviceApiSettings.GatewayBaseUri }{ serviceApiSettings.DiscountAPI.Path }");
+            })
+                .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
         }
     }
 }

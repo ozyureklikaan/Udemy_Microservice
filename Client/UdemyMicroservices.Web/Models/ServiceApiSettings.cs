@@ -13,6 +13,7 @@ namespace UdemyMicroservices.Web.Models
         public ServiceApi CatalogAPI { get; set; }
         public ServiceApi PhotoStockAPI { get; set; }
         public ServiceApi BasketAPI { get; set; }
+        public ServiceApi DiscountAPI { get; set; }
     }
 
     public class ServiceApi
