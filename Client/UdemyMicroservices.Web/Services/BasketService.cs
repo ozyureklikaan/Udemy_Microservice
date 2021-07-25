@@ -48,7 +48,7 @@ namespace UdemyMicroservices.Web.Services
             }
             else
             {
-                basket = new BasketViewModel() { BasketItems = new List<BasketItemViewModel>() };
+                basket = new BasketViewModel();
                 basket.BasketItems.Add(basketItemViewModel);
             }
 
