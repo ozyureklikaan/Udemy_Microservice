@@ -10,11 +10,11 @@ using UdemyMicroservices.Shared.Messages.Events;
 
 namespace UdemyMicroservices.Order.Application.Consumers
 {
-    public class CourseNameChangeEventConsumer : IConsumer<CourseNameChangedEvent>
+    public class CourseNameChangedEventConsumer : IConsumer<CourseNameChangedEvent>
     {
         private readonly OrderDbContext _orderDbContext;
 
-        public CourseNameChangeEventConsumer(OrderDbContext orderDbContext)
+        public CourseNameChangedEventConsumer(OrderDbContext orderDbContext)
         {
             _orderDbContext = orderDbContext ?? throw new ArgumentNullException(nameof(orderDbContext));
         }

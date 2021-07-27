@@ -40,7 +40,7 @@ namespace UdemyMicroservices.Order.API
                 // Commands
                 x.AddConsumer<CreateOrderMessageCommandConsumer>();
                 // Events
-                x.AddConsumer<CourseNameChangeEventConsumer>();
+                x.AddConsumer<CourseNameChangedEventConsumer>();
 
                 // Default Port: 5672
                 x.UsingRabbitMq((context, cfg) =>
@@ -58,7 +58,7 @@ namespace UdemyMicroservices.Order.API
 
                     cfg.ReceiveEndpoint("course-name-changed-event-order-service", e =>
                     {
-                        e.ConfigureConsumer<CourseNameChangeEventConsumer>(context);
+                        e.ConfigureConsumer<CourseNameChangedEventConsumer>(context);
                     });
                 });
             });
