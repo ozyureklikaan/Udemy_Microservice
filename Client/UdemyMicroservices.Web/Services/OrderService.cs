@@ -31,7 +31,7 @@ namespace UdemyMicroservices.Web.Services
         {
             var response = await _httpClient.GetFromJsonAsync<Response<List<OrderViewModel>>>("orders");
 
-            return response.Data;
+            return response.Data.OrderByDescending(x => x.Id).ToList();
         }
 
         public async Task<OrderCreatedViewModel> CreateOrder(CheckoutInfoInput checkoutInfoInput)
@@ -102,9 +102,58 @@ namespace UdemyMicroservices.Web.Services
             return orderCreatedViewModel.Data;
         }
 
-        public Task SuspendOrder(CheckoutInfoInput checkoutInfoInput)
+        public async Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput)
         {
-            throw new NotImplementedException();
+            var basket = await _basketService.Get();
+
+            var orderCreateInput = new OrderCreateInput()
+            {
+                BuyerId = _sharedIdentityService.GetUserId,
+                Address = new AddressCreateInput()
+                {
+                    Province = checkoutInfoInput.Province,
+                    District = checkoutInfoInput.District,
+                    Street = checkoutInfoInput.Street,
+                    ZipCode = checkoutInfoInput.ZipCode,
+                    Line = checkoutInfoInput.Line
+                }
+            };
+
+            basket.BasketItems.ForEach(x =>
+            {
+                orderCreateInput.OrderItems.Add(new OrderItemCreateInput()
+                {
+                    ProductId = x.CourseId,
+                    Price = x.GetCurrentPrice,
+                    PictureUrl = "",
+                    ProductName = x.CourseName
+                });
+            });
+
+            var paymentInfoInput = new PaymentInfoInput()
+            {
+                CardName = checkoutInfoInput.CardName,
+                CardNumber = checkoutInfoInput.CardNumber,
+                Expiration = checkoutInfoInput.Expiration,
+                CVV = checkoutInfoInput.CVV,
+                TotalPrice = basket.TotalPrice,
+                Order = orderCreateInput
+            };
+
+            var responsePayment = await _paymentService.ReveivePayment(paymentInfoInput);
+
+            if (!responsePayment)
+            {
+                return new OrderSuspendViewModel()
+                {
+                    Error = "Ödeme alınamadı",
+                    IsSuccessful = false
+                };
+            }
+
+            await _basketService.Delete();
+
+            return new OrderSuspendViewModel() { IsSuccessful = true };
         }
     }
 }

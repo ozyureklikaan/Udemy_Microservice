@@ -8,6 +8,7 @@ using UdemyMicroservices.Catalog.Dtos;
 using UdemyMicroservices.Catalog.Models;
 using UdemyMicroservices.Catalog.Settings;
 using UdemyMicroservices.Shared.Dtos;
+using UdemyMicroservices.Shared.Messages.Events;
 
 namespace UdemyMicroservices.Catalog.Services
 {
@@ -16,15 +17,17 @@ namespace UdemyMicroservices.Catalog.Services
         private readonly IMongoCollection<Course> _courseCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
         private readonly IMapper _mapper;
+        private readonly MassTransit.IPublishEndpoint _publishEndpoint;
 
-        public CourseSerice(IMapper mapper, IDatabaseSettings databaseSettings)
+        public CourseSerice(IMapper mapper, IDatabaseSettings databaseSettings, MassTransit.IPublishEndpoint publishEndpoint)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatabaseName);
-
             _courseCollection = database.GetCollection<Course>(databaseSettings.CourseCollectionName);
             _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
+
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
 
         public async Task<Response<List<CourseDto>>> GetAllAsync()
@@ -99,6 +102,12 @@ namespace UdemyMicroservices.Catalog.Services
             {
                 return Response<NoContent>.Fail("Course not found", 404);
             }
+
+            await _publishEndpoint.Publish<CourseNameChangedEvent>(new CourseNameChangedEvent()
+            {
+                CourseId = updateCourse.Id,
+                UpdatedName = courseUpdateDto.Name
+            });
 
             return Response<NoContent>.Success(204);
         }

@@ -8,6 +8,8 @@ namespace UdemyMicroservices.Web.Services.Interfaces
 {
     public interface IOrderService
     {
+        Task<List<OrderViewModel>> GetOrder();
+
         /// <summary>
         /// Senkron İletişim. Direk order mikroservisine istek yapılacak.
         /// </summary>
@@ -20,8 +22,6 @@ namespace UdemyMicroservices.Web.Services.Interfaces
         /// </summary>
         /// <param name="checkoutInfoInput"></param>
         /// <returns></returns>
-        Task SuspendOrder(CheckoutInfoInput checkoutInfoInput);
-
-        Task<List<OrderViewModel>> GetOrder();
+        Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput);
     }
 }

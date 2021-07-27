@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyMicroservices.Web.Models.Orders;
 
 namespace UdemyMicroservices.Web.Models.FakePayments
 {
@@ -12,5 +13,6 @@ namespace UdemyMicroservices.Web.Models.FakePayments
         public string Expiration { get; set; }
         public string CVV { get; set; }
         public decimal TotalPrice { get; set; }
+        public OrderCreateInput Order { get; set; }
     }
 }
