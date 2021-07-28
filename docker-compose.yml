@@ -7,11 +7,56 @@ services:
     discountdb:
         image: postgres
     identitydb:
-        image: mcr.microsoft.com/mssql/server
+        image: mcr.microsoft.com/mssql/server:2019-latest
     orderdb:
-        image: mcr.microsoft.com/mssql/server
+        image: mcr.microsoft.com/mssql/server:2019-latest
     rabbitmq:
         image: rabbitmq:3.9.0-management
+    catalog.api:
+        image: catalog_api_image
+        build:
+            context: .
+            dockerfile: Services/Catalog/UdemyMicroservices.Catalog/Dockerfile
+    identityserver.api:
+        image: identityserver_api_image
+        build:
+            context: .
+            dockerfile: IdentityServer\UdemyMicroservices.IdentityServer\Dockerfile
+    basket.api:
+        image: basket_api_image
+        build:
+            context: .
+            dockerfile: Services/Basket/UdemyMicroservices.Basket/Dockerfile
+    photostock.api:
+        image: photostock_api_image
+        build:
+            context: .
+            dockerfile: Services/PhotoStock/UdemyMicroservices.PhotoStock/Dockerfile
+    discount.api:
+        image: discount_api_image
+        build:
+            context: .
+            dockerfile: Services/Discount/UdemyMicroservice.Discount/Dockerfile
+    fakepayment.api:
+        image: fakepayment_api_image
+        build:
+            context: .
+            dockerfile: Services/FakePayment/UdemyMicroservices.FakePayment/Dockerfile
+    order.api:
+        image: order_api_image
+        build:
+            context: .
+            dockerfile: Services/Order/UdemyMicroservices.Order.API/Dockerfile
+    gateway.api:
+        image: gateway_api_image
+        build:
+            context: .
+            dockerfile: Gateways/UdemyMicroservices.Gateway/Dockerfile
+    aspnetcoremvc.web:
+        image: aspnetcoremvc_web_image
+        build:
+            context: .
+            dockerfile: Client/UdemyMicroservices.Web/Dockerfile
 volumes:
     catalogdb_volume:
     discountdb_volume:
