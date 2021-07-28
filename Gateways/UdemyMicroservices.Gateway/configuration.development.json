@@ -68,9 +68,10 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": [ "discount_fullpermission" ]
-      }
+        "AuthenticationProviderKey": "GatewayAuthenticationScheme"
+        //"AllowedScopes": [ "discount_fullpermission" ]
+      },
+      "DelegatingHandlers": [ "TokenExchangeDelegateHandler" ]
     },
     // Order API
     {
@@ -104,9 +105,10 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "GatewayAuthenticationScheme",
-        "AllowedScopes": [ "fake_payment_fullpermission" ]
-      }
+        "AuthenticationProviderKey": "GatewayAuthenticationScheme"
+        //"AllowedScopes": [ "fake_payment_fullpermission" ]
+      },
+      "DelegatingHandlers": [ "TokenExchangeDelegateHandler" ]
     }
   ],
   "GlobalConfiguration": {
